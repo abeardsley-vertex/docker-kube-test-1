@@ -1,0 +1,35 @@
+# Please refer https://aka.ms/HTTPSinContainer on how to setup an https developer certificate for your ASP .NET Core service.
+
+version: '3.4'
+
+services:
+  mvcwebapp:
+    image: mvcwebapp
+    build:
+      context: .
+      dockerfile: mvc-web-app/Dockerfile
+    ports:
+      - 8080:80
+  webapi:
+    image: mywebapi
+    build:
+      context: .
+      dockerfile: mywebapi/Dockerfile
+    ports:
+      - 8081:80
+    depends_on:
+        - db
+  db:
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: "Password123"
+      MSSQL_PID: developer
+    ports: 
+      - 1433:1433
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    volumes: 
+      - .\.sqldatafiles\backups:/var/opt/mssql/backups
+      - .\.sqldatafiles\data:/var/opt/mssql/data
+      - sql-data-secrets:/var/opt/mssql/secrets 
+volumes:
+  sql-data-secrets:
