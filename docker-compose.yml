@@ -36,5 +36,8 @@ services:
       - .\.sqldatafiles\backups:/var/opt/mssql/backups
       - .\.sqldatafiles\data:/var/opt/mssql/data
       - sql-data-secrets:/var/opt/mssql/secrets 
+
+
+      
 volumes:
   sql-data-secrets:
