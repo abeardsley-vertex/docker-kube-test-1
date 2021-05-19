@@ -9,6 +9,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
+using Microsoft.EntityFrameworkCore;
+
+using dataaccess;
 namespace mvc_web_app
 {
     public class Startup
@@ -23,16 +26,21 @@ namespace mvc_web_app
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews()
-                .AddRazorRuntimeCompilation();
+            try
+            {
+                services.AddControllersWithViews()
+                    .AddRazorRuntimeCompilation();
 
-            /*
-            var connection = @"Server=db;Database=master;User=sa;Password=Password123;";
+                var connection = @"Server=db;Database=Blogging;User=sa;Password=Password123;";
 
-            services.AddDbContext<ApplicationDbContext>(
-                options => options.UseSqlServer(connection));
-
-            */
+                services.AddDbContext<BloggingContext>(
+                    options => options.UseSqlServer(connection));
+            }
+            catch (System.Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                throw;
+            }   
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

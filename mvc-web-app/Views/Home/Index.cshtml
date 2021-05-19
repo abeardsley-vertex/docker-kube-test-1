@@ -1,8 +1,15 @@
-﻿@{
+﻿@model mvc_web_app.Models.Home.HomeModel
+@{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center">
     <h1 class="display-4">Welcomen</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
+    <h3>Blogs</h3>
+    @foreach (var u in Model.Urls)
+    {
+        @u <br />
+    }
 </div>
