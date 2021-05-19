@@ -11,6 +11,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using Microsoft.EntityFrameworkCore;
+using dataaccess;
 
 namespace mywebapi
 {
@@ -32,6 +34,11 @@ namespace mywebapi
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "mywebapi", Version = "v1" });
             });
+
+            var connection = @"Server=sqldb;Database=Blogging;User=sa;Password=Password123;";
+
+            services.AddDbContext<BloggingContext>(
+                options => options.UseSqlServer(connection));
 
         }
 

@@ -31,7 +31,7 @@ namespace mvc_web_app
                 services.AddControllersWithViews()
                     .AddRazorRuntimeCompilation();
 
-                var connection = @"Server=db;Database=Blogging;User=sa;Password=Password123;";
+                var connection = @"Server=sqldb;Database=Blogging;User=sa;Password=Password123;";
 
                 services.AddDbContext<BloggingContext>(
                     options => options.UseSqlServer(connection));

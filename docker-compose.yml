@@ -3,6 +3,7 @@
 version: '3.4'
 
 services:
+
   mvcwebapp:
     image: mvcwebapp
     build:
@@ -10,6 +11,8 @@ services:
       dockerfile: mvc-web-app/Dockerfile
     ports:
       - 8080:80
+
+
   webapi:
     image: mywebapi
     build:
@@ -18,8 +21,10 @@ services:
     ports:
       - 8081:80
     depends_on:
-        - db
-  db:
+        - sqldb
+
+
+  sqldb:
     environment:
       ACCEPT_EULA: "Y"
       SA_PASSWORD: "Password123"
