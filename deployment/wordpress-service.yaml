@@ -10,8 +10,8 @@ metadata:
   name: wordpress
 spec:
   ports:
-  - name: "8003"
-    port: 8003
+  - name: "80"
+    port: 80
     targetPort: 80
   selector:
     io.kompose.service: wordpress
