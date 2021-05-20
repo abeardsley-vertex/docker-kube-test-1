@@ -26,7 +26,7 @@ Testing Docker / Kubernetes / Vs Code Dev Environments
 - Live the MVC project above, if you get a database connection error in the browser, wait a few seconds and then reload the page, the database was probably not fully running.
 
 # Other notes:
-- If you want to make sure the database is running in Docker, open up Docker desktop and you should see it is running in a container on port 1499.
+- If you want to make sure the database is running in Docker, open up Docker desktop and you should see it is running in a container on port 1499. If it is not running you can start it from the command line project directory with `docker compose up sqldb -d`.
 
 # FAQ
 ## Why is SQL Server running on port 1499 instead of 1433 like a *normal* SQL Server?  
