@@ -11,6 +11,9 @@ services:
       dockerfile: mvc-web-app/Dockerfile
     ports:
       - 8080:80
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - DATABASE_CONNECTION=Server=sqldb;Database=Blogging;User=sa;Password=Password123;
     depends_on:
         - sqldb
 
@@ -22,6 +25,9 @@ services:
       dockerfile: mywebapi/Dockerfile
     ports:
       - 8081:80
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - DATABASE_CONNECTION=Server=sqldb;Database=Blogging;User=sa;Password=Password123;
     depends_on:
         - sqldb
 
@@ -32,7 +38,7 @@ services:
       SA_PASSWORD: "Password123"
       MSSQL_PID: developer
     ports: 
-      - 1433:1433
+      - 1499:1433
     image: mcr.microsoft.com/mssql/server:2019-latest
     volumes: 
       - .\.sqldatafiles\backups:/var/opt/mssql/backups
