@@ -3,7 +3,7 @@
     "tasks": [
         {
             "label": "run-sqlserver-docker",
-            "command": "docker compose up -d sqldb",
+            "command": "docker compose up -d --build sqldb",
             "type": "shell"
         },
         {
@@ -19,7 +19,7 @@
             "problemMatcher": "$msCompile",
             "dependsOn": [
                 "run-sqlserver-docker"
-            ],
+            ]
         },{
             "label": "build-mvcwebapp",
             "command": "dotnet",
@@ -30,7 +30,10 @@
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
-            "problemMatcher": "$msCompile"
+            "problemMatcher": "$msCompile",
+            "dependsOn": [
+                "run-sqlserver-docker"
+            ]
         },
         {
             "label": "publish",
