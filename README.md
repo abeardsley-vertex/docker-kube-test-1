@@ -33,6 +33,9 @@ Testing Docker / Kubernetes / Vs Code Dev Environments
 You cannot run a named instance with the Docker SQL Server image, only expose it on a different port.   
 If it was exposed on the normal 1433 port it might conflict with other locally-running SQL Servers (like SQLEXPRESS).  
 
+## Does that mean the Docker containers all communicate with SQL Server on port 1499 too?
+No.  When/if you run all Docker containers together (i.e. if you were to run `docker compose up --build -d`) then they all communicate on their "internal" network and the ports specified there.  
+
 ## Can I connect to the SQL Server Docker Database from SSMS?  
 Yes! Go to open a new database connection in SSMS like you normally would and then enter the following for connection details:  
 Server name: `localhost,1499`  
