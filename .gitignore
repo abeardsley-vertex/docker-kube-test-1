@@ -9,7 +9,9 @@ project.lock.json
 nupkg/
 
 # Visual Studio Code
-.vscode
+.vscode/*
+!.vscode/launch.json #Except for...
+!.vscode/tasks.json #Except for...
 
 # Rider
 .idea

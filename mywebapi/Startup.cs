@@ -35,7 +35,7 @@ namespace mywebapi
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "mywebapi", Version = "v1" });
             });
 
-            var connection = @"Server=sqldb;Database=Blogging;User=sa;Password=Password123;";
+            var connection = Environment.GetEnvironmentVariable("DATABASE_CONNECTION");
 
             services.AddDbContext<BloggingContext>(
                 options => options.UseSqlServer(connection));
