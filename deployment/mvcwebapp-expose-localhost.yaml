@@ -1,0 +1,13 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: mvc-loadbalancer
+spec:
+  ports:
+    - name: http
+      port: 8080
+      targetPort: 80
+      protocol: TCP
+  selector:
+    io.kompose.service: mvcwebapp
+  type: LoadBalancer

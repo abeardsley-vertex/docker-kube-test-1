@@ -15,5 +15,6 @@ spec:
     targetPort: 80
   selector:
     io.kompose.service: mvcwebapp
+  #type: LoadBalancer
 status:
   loadBalancer: {}

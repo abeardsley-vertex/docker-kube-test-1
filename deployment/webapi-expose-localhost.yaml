@@ -1,0 +1,13 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: webapi-loadbalancer
+spec:
+  ports:
+    - name: http
+      port: 8081
+      targetPort: 80
+      protocol: TCP
+  selector:
+    io.kompose.service: webapi
+  type: LoadBalancer

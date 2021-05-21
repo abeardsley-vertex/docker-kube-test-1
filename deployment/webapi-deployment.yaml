@@ -30,6 +30,11 @@ spec:
         ports:
         - containerPort: 80
         resources: {}
+        env:
+        - name: ASPNETCORE_ENVIRONMENT 
+          value: Development
+        - name: DATABASE_CONNECTION 
+          value: "Server=sqldb;Database=Blogging;User=sa;Password=Password123;"
       restartPolicy: Always
       serviceAccountName: ""
       volumes: null
