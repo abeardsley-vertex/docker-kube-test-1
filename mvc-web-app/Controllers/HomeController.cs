@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using mvc_web_app.Models;
+
 
 using dataaccess;
 
@@ -24,8 +26,14 @@ namespace mvc_web_app.Controllers
 
         public IActionResult Index()
         {
+            var delete = db.Blogs
+                .OrderByDescending(b => b.BlogId)
+                .Skip(10);
+            db.Blogs.RemoveRange(delete);
+            db.SaveChanges();
+
             db.Blogs.Add(new Blog{
-                Url = "https://" + Guid.NewGuid().ToString().Replace("-", "")
+                Url = DateTime.Now.ToLongDateString() + " " + DateTime.Now.ToLongTimeString() + DateTime.Now.Millisecond
             });
             db.SaveChanges();
 

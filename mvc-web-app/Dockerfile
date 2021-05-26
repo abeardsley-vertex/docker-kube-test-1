@@ -4,6 +4,8 @@ EXPOSE 80
 
 ENV ASPNETCORE_URLS=http://+:80
 
+ENV TZ="America/Chicago"
+
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /src
 COPY ["mvc-web-app/mvc-web-app.csproj", "mvc-web-app/"]
